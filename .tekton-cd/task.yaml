@@ -9,11 +9,11 @@ spec:
       command: ["bash", "-c"]
       args:
         - echo "=======================";
-          echo "returns param from endpoint https://node-status.mybluemix.net/status/:param";
+          echo "Endpoint - https://node-status.mybluemix.net/status/200";
           echo "=======================";
           sleep 30;
           alive=$(curl -s -S -k https://node-status.mybluemix.net/status/200);
-          if [ "$alive" == "200" ];
+          if [ "$alive" == 200 ];
           then echo "TEST PASS - 200"; exit 0;
           else echo "TEST FAIL - $alive"; exit 1;
           fi
