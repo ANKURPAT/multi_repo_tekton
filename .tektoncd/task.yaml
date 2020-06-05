@@ -1,0 +1,38 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task1
+spec:
+  steps:
+    - name: task-one-step-one
+      image: centos
+      command: ["bash", "-c"]
+      args:
+        - echo "=======================";
+          echo "Endpoint - https://node-status.mybluemix.net/status/200";
+          echo "=======================";
+          sleep 30;
+          alive=$(curl -s -S -k https://node-status.mybluemix.net/status/200);
+          if [ "$alive" == "200" ];
+          then echo "TEST PASS - 200"; exit 0;
+          else echo "TEST FAIL - $alive"; exit 1;
+          fi
+    - name: task-one-step-two
+      image: centos
+      command: ["bash", "-c"]
+      args:
+        - echo "=======================";
+          echo "Endpoint - https://node-status.mybluemix.net/status/200";
+          echo "=======================";
+          sleep 30;
+          alive=$(curl -s -S -k https://node-status.mybluemix.net/status/200);
+          if [ "$alive" == "200" ];
+          then echo "TEST PASS - 200"; exit 0;
+          else echo "TEST FAIL - $alive"; exit 1;
+          fi
+    - name: task-one-step-three
+      image: centos
+      command: ["bash", "-c"]
+      args:
+        - echo "=======================";
+          echo $HOME
