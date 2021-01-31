@@ -9,11 +9,13 @@ spec:
       command: ["bash", "-c"]
       args:
         - echo "=======================";
-          echo "Endpoint - https://node-status.mybluemix.net/status/200";
+          echo "Greenwell Site - Health Check";
+          echo "Using https://github.com/ziheng-c/greenwell-tekton.git";
+          echo "Endpoint - https://greenwell-app.eu-de.mybluemix.net/health";
           echo "=======================";
           sleep 30;
-          alive=$(curl -s -S -k https://node-status.mybluemix.net/status/200);
-          if [ "$alive" == 200 ];
+          alive=$(curl -s -S -k https://greenwell-app.eu-de.mybluemix.net/health);
+          if [ "$alive" == "200 - Healthy" ];
           then echo "TEST PASS - 200"; exit 0;
           else echo "TEST FAIL - $alive"; exit 1;
           fi
