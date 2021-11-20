@@ -9,12 +9,10 @@ spec:
       command: ["bash", "-c"]
       args:
         - echo "=======================";
-          echo "Greenwell Site - Health Check";
-          echo "Using https://github.com/ziheng-c/greenwell-tekton.git";
-          echo "Endpoint - https://greenwell-app.eu-de.mybluemix.net/health";
+          echo "Endpoint - https://test.cloud.ibm.com";
           echo "=======================";
           sleep 30;
-          alive=$(curl -s -S -k https://greenwell-app.eu-de.mybluemix.net/health);
+          alive=$(curl -LI https://test.cloud.ibm.com -o /dev/null -w '%{http_code}\n' -s);
           if [ "$alive" == "200 - Healthy" ];
           then echo "TEST PASS - 200"; exit 0;
           else echo "TEST FAIL - $alive"; exit 1;
