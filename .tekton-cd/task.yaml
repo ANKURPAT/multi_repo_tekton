@@ -5,16 +5,10 @@ metadata:
 spec:
   steps:
     - name: task-one-step-one
-      image: ibmcom/pipeline-base-image
+      image: centos
       command: ["bash", "-c"]
       args:
         - echo "=======================";
-          #echo "Endpoint - https://cloud.ibm.com";
           echo "Sample pipeline run in eu-fr2";
           echo "=======================";
-          #sleep 30;
-          #alive=$(curl -LI https://cloud.ibm.com -o /dev/null -w '%{http_code}\n' -s);
-          #if [ "$alive" == "200 - Healthy" ];
-          #then echo "TEST PASS - 200"; exit 0;
-          #else echo "TEST FAIL - $alive"; exit 1;
-          #fi
+          
